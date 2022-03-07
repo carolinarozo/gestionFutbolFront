@@ -39,8 +39,8 @@
             <div class="col-8">
 
 
-              <select [(ngModel)]="futbolista" class="form-control">
-                <option *ngFor="let item of listaJugador" value="{{item._id}}">{{item.nombre}}</option>
+              <select [(ngModel)]="tecnico" class="form-control">
+                <option *ngFor="let item of listaTecnico" value="{{item._id}}">{{item.nombre}}</option>
 
               </select>
 
@@ -48,12 +48,6 @@
             </div>
             <div class="col-4">
               <div class="row">
-                <div class="col-6">
-                  <button (click)="cargarFutbolistas()" class="btn btn-primary"><span class="material-icons">
-                      add_circle_outline
-                    </span></button>
-
-                </div>
                 <div class="col-6">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">

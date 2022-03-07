@@ -6,6 +6,7 @@ import { config } from 'src/app/config/config';
 import { WebsocketService } from 'src/app/service/websocket.service.service';
 import { io, Socket } from 'socket.io-client';
 import { PosicionServiceService } from 'src/app/service/posicion-service.service';
+import { TecnicoService } from 'src/app/service/tecnico.service';
 const socket = io(config.url)
 
 @Component({
@@ -17,14 +18,15 @@ export class EquipoComponent implements OnInit {
   form: FormGroup
   nombre: AbstractControl
   color: AbstractControl
-  id_tecnico: AbstractControl
+
 
   listaJugador: any[] = []//lista para cargar desde la base de datos
+  listaTecnico: any[] = []//lista para cargar desde la base de dato
 
 
   listaFutbolistas: any[] = []
   futbolista = ''
-  posicion = ''
+  tecnico = ''
 
   sub = false
 
@@ -35,7 +37,23 @@ export class EquipoComponent implements OnInit {
 
 
 
+  cargarTecnico() {//seleccionar futbolistas
+    let nombre1
+    this.listaJugador.forEach(i => {
+      if (i._id == this.futbolista) {
+        nombre1 = i.nombre
+        console.log(nombre1)
+      }
+    })
+    this.listaFutbolistas.push(this.futbolista)
+    this.nombreFutbolistas.push(nombre1)
+    console.log(this.listaFutbolistas)
 
+
+
+    this.futbolista = ''
+
+  }
 
   cargarFutbolistas() {//seleccionar futbolistas
     let nombre1
@@ -65,17 +83,17 @@ export class EquipoComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private serviceEquipo: EquipoService, private websoket: WebsocketService, private jugadorService: JugadoresService) {
+  constructor(private fb: FormBuilder, private serviceEquipo: EquipoService, private websoket: WebsocketService, private jugadorService: JugadoresService, private TecnicoService: TecnicoService) {
     this.obtenerRespuesta()
     this.form = this.fb.group({
       nombre: ['', Validators.required],
       color: ['', Validators.required],
-      id_tecnico: ['', Validators.required],
+      id_tecnico: [this.tecnico],
       id_futbolistas: [this.listaFutbolistas]
     })
     this.nombre = this.form.controls['nombre']
     this.color = this.form.controls['color']
-    this.id_tecnico = this.form.controls['id_tecnico']
+
 
   }
 
@@ -91,6 +109,11 @@ export class EquipoComponent implements OnInit {
 
       this.listaJugador = res
 
+    })
+
+    this.TecnicoService.get().subscribe((res: any) => {
+      console.log(res)
+      this.listaTecnico = res
     })
 
 
