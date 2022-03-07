@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+a {
+
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+
+}
+
+
+.error {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + .75rem);
+
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.validacion {
+  border-color: #28a745;
+  padding-right: calc(1.5em + .75rem);
+
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.pointer {
+  cursor: pointer;
+}
