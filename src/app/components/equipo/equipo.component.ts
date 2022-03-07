@@ -20,7 +20,7 @@ export class EquipoComponent implements OnInit {
   id_tecnico: AbstractControl
 
   listaJugador: any[] = []//lista para cargar desde la base de datos
-  listaPosicion: any[] = []//lista para cargar desde la base de datos
+
 
   listaFutbolistas: any[] = []
   futbolista = ''
@@ -65,7 +65,7 @@ export class EquipoComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private serviceEquipo: EquipoService, private websoket: WebsocketService, private jugadorService: JugadoresService, private posicionService: PosicionServiceService) {
+  constructor(private fb: FormBuilder, private serviceEquipo: EquipoService, private websoket: WebsocketService, private jugadorService: JugadoresService) {
     this.obtenerRespuesta()
     this.form = this.fb.group({
       nombre: ['', Validators.required],
@@ -92,12 +92,7 @@ export class EquipoComponent implements OnInit {
       this.listaJugador = res
 
     })
-    this.posicionService.get().subscribe((res: any) => {
-      console.log(res)
 
-      this.listaPosicion = res
-
-    })
 
 
   }
