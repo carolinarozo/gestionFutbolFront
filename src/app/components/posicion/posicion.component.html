@@ -1,0 +1,33 @@
+<div class="container mt-4 ">
+  <div class="row">
+    <h1>Registro de la posicion de juego</h1>
+    <div class="col-6 mt-3">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label">Nombre de la posicion</label>
+          <input type="text" formControlName="nombre" class="form-control"
+            [ngClass]="{error: sub && getForm['nombre'].errors,'validacion': nombre.valid && (nombre.dirty || nombre.touched) }">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nomenclatura</label>
+          <input type="text" formControlName="nomenclatura" class="form-control"
+            [ngClass]="{error: sub && getForm['nomenclatura'].errors,'validacion': nomenclatura.valid && (nomenclatura.dirty || nomenclatura.touched) }">
+        </div>
+
+
+        <button class="btn btn-primary" (click)="sendDatos()">Registrar</button>
+      </form>
+    </div>
+    <div class="col-6 mt-2">
+
+      <app-adm-posicion></app-adm-posicion>
+
+
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <hr>
+
+</div>

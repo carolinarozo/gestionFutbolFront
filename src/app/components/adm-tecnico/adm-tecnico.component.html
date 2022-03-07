@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <input type="text" placeholder="search" (keyup)="search($event)" [(ngModel)]="buscar">
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha de nacimiento</th>
+            <th>Edad</th>
+
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaTecnico">
+            <th>
+              <span (click)="findById(item._id)" class="pointer" *ngIf="!item.status">{{item.nombre}}</span>
+              <input *ngIf="item.status" class="form-control" placeholder="{{item.nombre}}" [(ngModel)]="nombre">
+
+            </th>
+            <th>
+              <span (click)="findById(item._id)" class="pointer" *ngIf="!item.status">{{item.fechaNacimiento}}</span>
+              <input type="date" *ngIf="item.status" class="form-control" placeholder="{{item.fechaNacimiento}}"
+                [(ngModel)]="fechaNacimiento">
+            </th>
+            <th>
+              <span (click)="findById(item._id)" class="pointer" *ngIf="!item.status">{{item.edad}}</span>
+
+            </th>
+
+            <th><button *ngIf="!item.status" class="btn btn-primary" (click)="editar(item)">Editar</button>
+              <button *ngIf="item.status" class="btn btn-primary" (click)="guardar(item)">Actualizar</button>
+
+            </th>
+
+            <th>
+              <button *ngIf="!item.status" class="btn btn-danger" (click)="eliminar(item._id)"><span
+                  class="material-icons">
+                  delete_forever
+                </span></button>
+              <button *ngIf="item.status" class="btn btn-danger" (click)="cancelar(item)">Cancelar</button>
+            </th>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

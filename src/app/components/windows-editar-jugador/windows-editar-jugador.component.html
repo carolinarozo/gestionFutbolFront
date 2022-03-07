@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-3">
+
+      <a [routerLink]="['/admin/windowsjugador/jugador']" class="btn btn-info">Gestionar Jugadores</a>
+    </div>
+    <div class="col-3">
+      <a [routerLink]="['/admin/windowsjugador/posicion']" class="btn btn-info">Añadir nuevas posiciones</a>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container mt-4 ">
+  <div class="row">
+    <div class="col-6 mt-3">
+      <h1>Registro de arbitro</h1>
+      <br>
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input type="text" formControlName="nombre" class="form-control"
+            [ngClass]="{error: sub && getForm['nombre'].errors,'validacion': nombre.valid && (nombre.dirty || nombre.touched) }">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha de nacimiento</label>
+          <input type="date" formControlName="fechaNacimiento" class="form-control"
+            [ngClass]="{error: sub && getForm['fechaNacimiento'].errors,'validacion': fechaNacimiento.valid && (fechaNacimiento.dirty || fechaNacimiento.touched) }">
+        </div>
+
+
+
+        <button class="btn btn-primary" (click)="sendDatos()">Registar</button>
+      </form>
+    </div>
+    <div class="col-6 mt-2">
+      <h2 class="text-center">Lista de arbitros</h2>
+
+      <app-admin-arbitro></app-admin-arbitro>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <hr>
+
+</div>
