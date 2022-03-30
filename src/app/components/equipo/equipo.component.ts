@@ -37,23 +37,6 @@ export class EquipoComponent implements OnInit {
 
 
 
-  cargarTecnico() {//seleccionar futbolistas
-    let nombre1
-    this.listaJugador.forEach(i => {
-      if (i._id == this.futbolista) {
-        nombre1 = i.nombre
-        console.log(nombre1)
-      }
-    })
-    this.listaFutbolistas.push(this.futbolista)
-    this.nombreFutbolistas.push(nombre1)
-    console.log(this.listaFutbolistas)
-
-
-
-    this.futbolista = ''
-
-  }
 
   cargarFutbolistas() {//seleccionar futbolistas
     let nombre1
@@ -88,11 +71,12 @@ export class EquipoComponent implements OnInit {
     this.form = this.fb.group({
       nombre: ['', Validators.required],
       color: ['', Validators.required],
-      id_tecnico: [this.tecnico],
+      id_tecnico: [''],
       id_futbolistas: [this.listaFutbolistas]
     })
     this.nombre = this.form.controls['nombre']
     this.color = this.form.controls['color']
+
 
 
   }
@@ -134,14 +118,17 @@ export class EquipoComponent implements OnInit {
 
 
   sendDatos() {//envio de datos a db equipo
-    console.log(this.form.controls)
+
+    console.log(this.tecnico)
 
 
     this.sub = true
     if (this.form.invalid) {
       return console.log('fallo')
     }
+    this.form.value.id_tecnico = this.tecnico
     console.log(this.form.value)
+
     this.serviceEquipo.sendDatos(this.form.value).subscribe((res: any) => {
       if (res.status) {
 

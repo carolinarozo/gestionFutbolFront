@@ -1,7 +1,8 @@
 <div class="container-fluid mt-4 ">
   <div class="row">
-    <h1>Registro de equipos</h1>
-    <div class="col-8 mt-3">
+
+    <div class="col-7 mt-3">
+      <h1>Registro de equipos</h1>
       <div class="row">
         <div class="col-6">
 
@@ -18,14 +19,7 @@
             </div>
 
 
-            <!-- 
-    
-                <div class="mb-3">
-                    <label class="form-label">id_futbolistas</label>
-                    <input type="text" formControlName="id_futbolistas" class="form-control"
-                    [ngClass]="{error: sub && getForm['id_futbolistas'].errors,'validacion': id_tecnico.valid && (id_tecnico.dirty || id_tecnico.touched) }">
-                </div>
-            -->
+
 
 
 
@@ -35,11 +29,13 @@
 
         <div class="col-6">
           <div class="row">
-            <label>Seleccione el arbitro</label>
+            <label>Seleccione el técnico</label>
             <div class="col-8">
 
 
-              <select [(ngModel)]="tecnico" class="form-control">
+              <select [(ngModel)]="tecnico" class="form-control " class="form-select">
+                <option selected>Open this select menu</option>
+
                 <option *ngFor="let item of listaTecnico" value="{{item._id}}">{{item.nombre}}</option>
 
               </select>
@@ -74,7 +70,7 @@
             <div class="col-8">
 
 
-              <select [(ngModel)]="futbolista" class="form-control">
+              <select [(ngModel)]="futbolista" class="form-control form-select">
                 <option *ngFor="let item of listaJugador" value="{{item._id}}">{{item.nombre}}</option>
 
               </select>
@@ -180,7 +176,9 @@
 
       </div>
     </div>
-    <div class="col-4 mt-2">
+
+    <div class="col-5 mt-2">
+      <h1>Lista de equipos</h1>
 
       <app-admin-equipo></app-admin-equipo>
 
